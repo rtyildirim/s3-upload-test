@@ -1,0 +1,15 @@
+version: '3'
+services:
+  fhir-conn:
+    ports: 
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      BUCKET: fhir-tolga-out
+      SUBMISSIONURL: http://cqm-sandbox.alphora.com/cqf-ruler-dstu3/fhir
+      EXTERNALURL: http://3.90.39.179:5000
+      RESOURCEBASEURL: s3location
+      REGION: us-east-1
+    restart: unless-stopped
+    build:
+      context: .
